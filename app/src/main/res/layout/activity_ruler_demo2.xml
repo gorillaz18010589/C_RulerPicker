@@ -126,7 +126,8 @@
             app:min_value="100"
             app:notch_color="@color/white"
             app:ruler_text_size="4sp"
-            tools:targetApi="lollipop" />
+            tools:targetApi="lollipop"
+            />
 
         <TextView
             android:id="@+id/weight_picker_heading"
@@ -161,7 +162,6 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginTop="4dp"
-            android:background="@android:color/holo_orange_dark"
             android:elevation="4dp"
             app:indicator_color="@android:color/white"
             app:indicator_interval="14dp"
@@ -170,7 +170,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/weight_value_tv"
-            app:max_value="20"
+            app:max_value="100"
             app:min_value="0"
             app:notch_color="@android:color/white"
             app:ruler_text_size="6sp"

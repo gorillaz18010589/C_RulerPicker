@@ -3,14 +3,19 @@ package com.dyaco.c_rulerpicker;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class RulerDemoActivity2 extends AppCompatActivity {
+    private CircleImageView profile_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +29,12 @@ public class RulerDemoActivity2 extends AppCompatActivity {
 //        }
 
         final TextInputEditText nameEt = findViewById(R.id.profile_name_et);
+        profile_image = findViewById(R.id.profile_image);
+
+        profile_image.setOnClickListener(v ->{
+            startActivity(new Intent(RulerDemoActivity2.this, ThreeActivity.class));
+        });
+
         nameEt.setText("Audrey Jessica");
 
         //Set the height picker
@@ -47,7 +58,9 @@ public class RulerDemoActivity2 extends AppCompatActivity {
         final RulerValuePicker weightPicker = findViewById(R.id.weight_ruler_picker);
         weightPicker.setTextSize(22);
 
-        weightPicker.selectValue(55);
+
+//        weightPicker.selectValue(55);
+        weightPicker.setIndicatorIntervalDistance(25);
         weightPicker.setValuePickerListener(new RulerValuePickerListener() {
             @Override
             public void onValueChange(final int selectedValue) {
@@ -68,4 +81,6 @@ public class RulerDemoActivity2 extends AppCompatActivity {
         finish();
         return super.onOptionsItemSelected(item);
     }
+
+
 }

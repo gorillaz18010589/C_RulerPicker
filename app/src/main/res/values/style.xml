@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextView_Black02_Size24" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/black02</item>
+        <item name="android:fontFamily">@font/inter_extra_bold</item>
+    </style>
+
+    <style name="TextView_white05_Size24" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/white_05</item>
+        <item name="android:fontFamily">@font/inter_extra_bold</item>
+
+    </style>
+
+
+    <style name="TextView_Black02_Size64" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">64sp</item>
+        <item name="android:textColor">@color/black02</item>
+        <item name="android:fontFamily">@font/inter_black</item>
+    </style>
+
+
+    <style name="TextView_Yellow01_Size24" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/yellow01</item>
+        <item name="android:fontFamily">@font/open_sans_bold</item>
+    </style>
+
+    <style name="TextView_Yellow01_bold_Size48" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">48sp</item>
+        <item name="android:textColor">@color/yellow01</item>
+        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

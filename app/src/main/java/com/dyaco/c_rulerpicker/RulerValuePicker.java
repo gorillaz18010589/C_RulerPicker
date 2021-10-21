@@ -43,7 +43,7 @@ public final class RulerValuePicker extends FrameLayout implements ObservableHor
     @SuppressWarnings("NullableProblems")
     @NonNull
     private RulerView mRulerView;
-    /**
+    /**t
      * {@link ObservableHorizontalScrollView}, that will host all three components.
      *
      * @see #mLeftSpacer

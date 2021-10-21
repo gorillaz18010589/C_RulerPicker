@@ -6,8 +6,11 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
+import android.graphics.fonts.Font;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.CheckResult;
@@ -149,6 +152,13 @@ final class RulerView extends View {
     @Dimension
     private float mIndicatorWidthPx = 4f;
 
+
+    private int offsetStart = 0;
+
+    private int longIndicatorStartInterval = 5;
+
+    private int mTextMarginTop = 10;
+
     public RulerView(@NonNull final Context context) {
         super(context);
         parseAttr(null);
@@ -207,6 +217,11 @@ final class RulerView extends View {
                             4);
                 }
 
+                if (a.hasValue(R.styleable.RulerView_ruler_text_margin_top)) {
+                    mTextMarginTop = a.getDimensionPixelSize(R.styleable.RulerView_ruler_text_margin_top,
+                            0);
+                }
+
                 if (a.hasValue(R.styleable.RulerView_long_height_height_ratio)) {
                     mLongIndicatorHeightRatio = a.getFraction(R.styleable.RulerView_long_height_height_ratio,
                             1, 1, 0.6f);
@@ -244,6 +259,8 @@ final class RulerView extends View {
         mTextPaint.setColor(mTextColor);
         mTextPaint.setTextSize(mTextSize);
         mTextPaint.setTextAlign(Paint.Align.CENTER);
+//        mTextPaint.setTypeface(Typeface.createFromAsset(getContext().getAssets(), "font/inter_extra_bold.ttf"));
+
 
         invalidate();
         requestLayout();
@@ -253,11 +270,13 @@ final class RulerView extends View {
     protected void onDraw(Canvas canvas) {
         //Iterate through all value
         for (int value = 1; value < mMaxValue - mMinValue; value++) {
-
-            if (value % 5 == 0) {
+            Log.v("hank","onDraw: value:" + value);
+            if (value % longIndicatorStartInterval == 0) {
                 drawLongIndicator(canvas, value);
                 drawValueText(canvas, value);
+                Log.v("hank","onDraw 長座標: value:" + value);
             } else {
+                Log.v("hank","onDraw 短座標: value:" + value);
                 drawSmallIndicator(canvas, value);
             }
         }
@@ -302,9 +321,9 @@ final class RulerView extends View {
      */
     private void drawSmallIndicator(@NonNull final Canvas canvas,
                                     final int value) {
-        canvas.drawLine(mIndicatorInterval * value,
+        canvas.drawLine(mIndicatorInterval * value +offsetStart ,
                 0,
-                mIndicatorInterval * value,
+                mIndicatorInterval * value +offsetStart ,
                 mShortIndicatorHeight,
                 mIndicatorPaint);
     }
@@ -317,9 +336,9 @@ final class RulerView extends View {
      */
     private void drawLongIndicator(@NonNull final Canvas canvas,
                                    final int value) {
-        canvas.drawLine(mIndicatorInterval * value,
+        canvas.drawLine(mIndicatorInterval * value + offsetStart,
                 0,
-                mIndicatorInterval * value,
+                mIndicatorInterval * value + offsetStart,
                 mLongIndicatorHeight,
                 mIndicatorPaint);
     }
@@ -333,9 +352,11 @@ final class RulerView extends View {
      */
     private void drawValueText(@NonNull final Canvas canvas,
                                final int value) {
+
+        Log.v("hank","drawValueText() mTextMarginTop:" + mTextMarginTop);
         canvas.drawText(String.valueOf(value + mMinValue),
-                mIndicatorInterval * value,
-                mLongIndicatorHeight + mTextPaint.getTextSize(),
+                mIndicatorInterval * value + offsetStart,
+                mLongIndicatorHeight + mTextPaint.getTextSize() + mTextMarginTop,
                 mTextPaint);
     }
 

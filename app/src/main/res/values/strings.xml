@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">C_RulerPicker</string>
+
+    <string name="s_max_level">max level</string>
+    <string name="s_heart_age_target">Based on your age, your target heart rate is</string>
+    <string name="s_bpm">bpm</string>
+    <string name="s_total_time">total time</string>
+    <string name="s_min">min</string>
+
 </resources>
